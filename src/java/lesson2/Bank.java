@@ -1,5 +1,5 @@
-
-public class BankAccount {
+package lesson2;
+class BankAccount {
 
     private String accountNumber ; // (номер счета)
     private double balance ; // (баланс)
