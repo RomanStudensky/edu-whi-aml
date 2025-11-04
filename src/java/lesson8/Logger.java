@@ -15,13 +15,3 @@ public class Logger {
         System.out.println("[LOG] " + message);
     }
 }
-
-class Main {
-    public static void main(String[] args) {
-        Logger.getInstance().log("Программа запущена!");
-        Logger logger1 = Logger.getInstance();
-        Logger logger2 = Logger.getInstance();
-        System.out.println("Один и тот же объект? " + (logger1 == logger2));
-        Logger.getInstance().log("Программа завершена!");
-    }
-}

@@ -5,7 +5,7 @@ public class Car {
     private String model; //  (модель автомобиля)
     private String year; // (год выпуска)
 
-    Car(String brand, String model, String year){
+    public Car(String brand, String model, String year){
         this.brand = brand;
         this.model = model;
         this.year = year;
@@ -45,8 +45,4 @@ public class Car {
         System.out.println("======================================");
     }
 
-    public static void main(String[] args) {
-        Car c = new Car("BMW", "C2", "2024");
-        c.displayInfo();
-    }
 }

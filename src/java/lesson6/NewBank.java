@@ -63,33 +63,4 @@ public class NewBank {
         System.out.println("======================================");
     }
 
-    public static void main(String[] args) {
-        NewBank ba = new NewBank();
-
-        ba.setAccountNumber("ЦА16545/165-5");
-        ba.setOwnerName("");
-        ba.setBalance(10000.00);
-
-        ba.displayInfo();
-
-        try {
-            ba.deposit(500.00);
-            ba.withdraw(2500.00);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Произошла ошибка: " + e.getMessage());
-        }
-
-        System.out.println("\n--- Тестирование исключений ---");
-
-
-        try {
-            ba.withdraw(-100.00); // Эта операция должна вызвать исключение
-        } catch (IllegalArgumentException e) {
-            System.out.println("Поймано исключение: " + e.getMessage());
-        }
-
-
-        System.out.println("\n--- Итоговое состояние счета ---");
-        ba.displayInfo();
-    }
 }
