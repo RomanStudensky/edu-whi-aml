@@ -1,5 +1,5 @@
 package lesson2;
-class BankAccount {
+public class BankAccount {
 
     private String accountNumber ; // (номер счета)
     private double balance ; // (баланс)
@@ -68,17 +68,4 @@ class BankAccount {
         System.out.println("======================================");
     }
 
-    public static void main(String[] args) {
-        BankAccount ba = new BankAccount();
-
-        ba.setAccountNumber("ЦА16545/165-5");
-        ba.setOwnerName("");
-        ba.setBalance(10000.00);
-
-        ba.displayInfo();
-
-        ba.deposit(500.00);
-        ba.withdraw(2500.00);
-
-    }
 }
