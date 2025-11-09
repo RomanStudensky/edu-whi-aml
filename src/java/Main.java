@@ -1,4 +1,6 @@
 import lesson1.Car;
+import lesson10.LoggerFactory;
+import lesson10.LoggerFactoryType;
 import lesson2.BankAccount;
 import lesson3.Animal;
 import lesson4.Circle;
@@ -299,18 +301,56 @@ class Main {
             }
         });
 
+
         taskManager.addTask(12, new Task() {
             @Override
             public void run() {
-                System.out.println("Демонстрация паттерна Singleton...");
-                Logger.getInstance().log("Первое сообщение");
-                Logger.getInstance().log("Второе сообщение");
-                Logger.getInstance().log("Третье сообщение");
+                System.out.println("Работа с массивами...");
+                int[] numbers = {1, 2, 7, 4, 5, 3};
+                System.out.print("Исходный массив: ");
+                for (int num : numbers) {
+                    System.out.print(num + " ");
+                }
+                System.out.println();
 
-                // Проверка, что это действительно Singleton
-                Logger logger1 = Logger.getInstance();
-                Logger logger2 = Logger.getInstance();
-                System.out.println("logger1 == logger2: " + (logger1 == logger2));
+                int sum = 0;
+                int max = numbers[0];
+                for (int num : numbers) {
+                    sum += num;
+                    if (num > max) max = num;
+                }
+
+                System.out.println("Сумма элементов: " + sum);
+                System.out.println("Максимальный элемент: " + max);
+                System.out.println("Среднее значение: " + (double)sum / numbers.length);
+            }
+
+            @Override
+            public void describe() {
+                System.out.println("Операции с массивами - сумма, максимум, среднее");
+            }
+        });
+
+        taskManager.addTask(13, new Task() {
+            @Override
+            public void run() {
+                lesson10.Logger logger1 = LoggerFactory.getLoggerNew("Les10");
+                logger1.infoNew("Приложение запущено");
+                logger1.debugNew("Отладочная информация");
+                logger1.errorNew("Произошла ошибка");
+
+                // Переключаем на файловое логгирование
+                LoggerFactory.initFactory(LoggerFactoryType.FILE);
+
+                lesson10.Logger logger2 = LoggerFactory.getLoggerNew("Les10");
+                logger2.infoNew("Это сообщение будет записано в файл");
+
+                lesson10.Logger logger3 = LoggerFactory.getLoggerNew(Main.class);
+                logger3.debugNew("Логгер для класса Main");
+
+                // Проверка, что логгеры кэшируются
+                lesson10.Logger logger4 = LoggerFactory.getLoggerNew("Les10");
+                System.out.println("logger2 и logger4 один и тот же объект: " + (logger2 == logger4));
 
             }
 
